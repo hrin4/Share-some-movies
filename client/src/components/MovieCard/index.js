@@ -33,7 +33,7 @@ const PlusIcon = styled(Box)(({ theme }) => ({
 }))
 
 
-const MovieCard = ({ movie, onCardSelect}) => {
+const MovieCard = ({ movie, onCardSelect, isPreviewMode }) => {
     return (
         <Card sx={{ maxWidth: 250, height: 480, position: "relative" }}>
             <Box sx={{ position: 'relative'}}>
@@ -43,9 +43,11 @@ const MovieCard = ({ movie, onCardSelect}) => {
                     image={movie.image}
                     alt={movie.title}
                     />
-                    <PlusIcon onClick={() => onCardSelect(movie)}>
-                        <AddBoxOutlinedIcon sx={{ fontSize: 80 }}/>
-                    </PlusIcon>
+                    {!isPreviewMode && (
+                        <PlusIcon onClick={() => onCardSelect(movie)}>
+                            <AddBoxOutlinedIcon sx={{ fontSize: 80 }}/>
+                        </PlusIcon>
+                    )}
             </Box>
 
             <CardInfo>
